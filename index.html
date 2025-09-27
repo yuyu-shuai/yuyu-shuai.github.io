@@ -46,6 +46,10 @@
     .btn-grid a{background:rgba(255,255,255,.18);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-size:.9rem;text-align:center;transition:.2s;min-width:200px;line-height:1.2;}
     .btn-grid a:hover{background:rgba(255,255,255,.25);} 
 
+    :root{
+      --red-box-height: 180px; /* 单个红框高度 */
+    }
+
     /* 保持 iframe 固定高度，让内部内容在该视窗内滚动 */
     iframe.embedded{
       width:100%;
@@ -56,16 +60,15 @@
 
     /* 红框范围内滚动（让容器滚动而不是整页） */
     .red-box{
-      height:180px; /* 红框可视范围 */
-      border:2px solid #ff3b30; /* 红色边框 */
+      height:calc(var(--red-box-height) * 2);
+      border:2px solid #ff3b30;
       border-radius:8px;
-      overflow-y:auto; /* 在红框内滚动 */
-      -webkit-overflow-scrolling:touch;
+      overflow:hidden; /* 取消滚动 */
       margin:8px 0;
     }
     .red-box iframe{
       width:100%;
-      height:1000px; /* 让内容超出红框高度，从而出现滚动条 */
+      height:100%; /* 填满容器，无滚动 */
       border:none;
       display:block;
     }
