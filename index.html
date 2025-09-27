@@ -44,20 +44,30 @@
     ol{margin:0 0 16px;padding-left:1.2em;line-height:1.55;font-size:.9rem;}
     .btn-grid{display:flex;justify-content:center;gap:8px;margin:0 0 16px;}
     .btn-grid a{background:rgba(255,255,255,.18);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-size:.9rem;text-align:center;transition:.2s;min-width:200px;line-height:1.2;}
-    .btn-grid a:hover{background:rgba(255,255,255,.25);}
+    .btn-grid a:hover{background:rgba(255,255,255,.25);} 
 
-    /* 强制可滚动 iframe 容器 */
-    .scroll-box{
-      max-height:600px; /* 增加最大高度 */
-      border-radius:8px;
-      overflow-y:scroll; /* 允许垂直滚动 */
-      -webkit-overflow-scrolling:touch;
-    }
-    .scroll-box iframe{
+    /* 保持 iframe 固定高度，让内部内容在该视窗内滚动 */
+    iframe.embedded{
       width:100%;
-      height:100%;
+      height:180px; /* 原先大小 */
       border:none;
-      scrolling:"yes"; /* 允许滚动 */
+      display:block;
+    }
+
+    /* 红框范围内滚动（让容器滚动而不是整页） */
+    .red-box{
+      height:180px; /* 红框可视范围 */
+      border:2px solid #ff3b30; /* 红色边框 */
+      border-radius:8px;
+      overflow-y:auto; /* 在红框内滚动 */
+      -webkit-overflow-scrolling:touch;
+      margin:8px 0;
+    }
+    .red-box iframe{
+      width:100%;
+      height:1000px; /* 让内容超出红框高度，从而出现滚动条 */
+      border:none;
+      display:block;
     }
 
     footer{text-align:center;font-size:.7rem;color:#ffffffaa;margin-top:12px;}
@@ -82,14 +92,9 @@
       <a href="https://flowus.cn/af9ad526-f519-45ea-b74d-57f86fe72000" target="_blank" rel="noopener">独享海外苹果ID</a>
     </div>
 
-    <!-- 让外层容器也足够高，并允许滚动 -->
-<div>
-  <iframe src="https://s.jiesuo.one/s/e645da4602ac4891a0533a7c1163f5c9"
-          width="100%"
-          height="180"
-          scrolling="yes"
-          style="border:none;">
-  </iframe>
+    <!-- 红框范围内滚动（滚动条在红框内出现） -->
+<div class="red-box">
+  <iframe src="https://s.jiesuo.one/s/e645da4602ac4891a0533a7c1163f5c9"></iframe>
 </div>
 
     <footer>© 2025 | <a href="ttps://flowus.cn/af9ad526-f519-45ea-b74d-57f86fe72000>宇帅苹果</a>节点</a> | GitHub</footer>
